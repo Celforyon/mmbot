@@ -1,0 +1,30 @@
+#!/bin/bash
+
+export MATTERMOST_PROTOCOL=http
+[ "${MATTERMOST_BOT_SSL_VERIFY:-True}" = "True" ] && export MATTERMOST_PROTOCOL=https
+
+[ -n "${MATTERMOST_DOMAIN}" ] && export MATTERMOST_BOT_URL="${MATTERMOST_PROTOCOL}://${MATTERMOST_DOMAIN}/api/${MATTERMOST_API_VERSION:-v3}"
+
+settings=/usr/local/lib/python2.7/dist-packages/mattermost_bot_settings.py
+
+function plugins_add() {
+	settings=$1
+	d=$2
+	p=/plugins/${d}
+
+	if [ -f "${p}/__init__.py" ]; then
+		echo>>$settings "    'mattermost_bot.userplugins.${d}',"
+	else
+		echo>&2 "warn: ignoring ${p} (missing __init__.py"
+	fi
+}
+
+echo> $settings 'PLUGINS = ['
+echo>>$settings "    'mattermost_bot.plugins',"
+plugins_add "${settings}" ""
+ls -1d /plugins/*/|cut -c10-|rev|cut -c2-|rev|while read -r d; do
+	plugins_add "${settings}" "${d}"
+done
+echo>>$settings ']'
+
+sudo -EHu matterbot matterbot
