@@ -27,4 +27,4 @@ ls -1d /plugins/*/|cut -c10-|rev|cut -c2-|rev|while read -r d; do
 done
 echo>>$settings ']'
 
-sudo -EHu matterbot matterbot
+matterbot
