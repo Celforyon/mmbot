@@ -7,6 +7,9 @@ Docker image with Mattermost Bot (https://github.com/LPgenerator/mattermost\_bot
 - `MATTERMOST_BOT_LOGIN`: the bot login
 - `MATTERMOST_BOT_PASSWORD`: the bot password
 - `MATTERMOST_BOT_TEAM`: the Mattermost team to join
+- `MATTERMOST_BOT_DEBUG`: set to `True` to enable debug mode, defaults to `False`
+- `MATTERMOST_BOT_PLUGINS_ONLY_DOC`: set to `True` to disable regexp in help message, defaults to `False`
+- `MATTERMOST_BOT_WORKERS`: the bot number of workers, defaults to `10`
 
 ### Alternative to MATTERMOST\_BOT\_URL
 - `MATTERMOST_DOMAIN`: the Mattermost domain (**without** `http://`)

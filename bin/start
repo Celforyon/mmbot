@@ -19,12 +19,18 @@ function plugins_add() {
 	fi
 }
 
-echo> $settings 'PLUGINS = ['
+echo> $settings "DEBUG = ${MATTERMOST_BOT_DEBUG:-False}"
+
+echo>>$settings 'PLUGINS = ['
 echo>>$settings "    'mattermost_bot.plugins',"
 plugins_add "${settings}" ""
 ls -1d /plugins/*/|cut -c10-|rev|cut -c2-|rev|while read -r d; do
 	plugins_add "${settings}" "${d}"
 done
 echo>>$settings ']'
+
+echo>>$settings "PLUGINS_ONLY_DOC_STRING = ${MATTERMOST_BOT_PLUGINS_ONLY_DOC:-False}"
+
+echo>>$settings "WORKERS_NUM = ${MATTERMOST_BOT_WORKERS:-10}"
 
 matterbot
