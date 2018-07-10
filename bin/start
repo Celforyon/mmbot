@@ -3,7 +3,7 @@
 export MATTERMOST_PROTOCOL=http
 [ "${MATTERMOST_BOT_SSL_VERIFY:-True}" = "True" ] && export MATTERMOST_PROTOCOL=https
 
-[ -n "${MATTERMOST_DOMAIN}" ] && export MATTERMOST_BOT_URL="${MATTERMOST_PROTOCOL}://${MATTERMOST_DOMAIN}/api/${MATTERMOST_API_VERSION:-v3}"
+[ -n "${MATTERMOST_DOMAIN}" ] && export MATTERMOST_BOT_URL="${MATTERMOST_PROTOCOL}://${MATTERMOST_DOMAIN}/api/${MATTERMOST_API_VERSION:-v4}"
 
 settings=/usr/local/lib/python2.7/dist-packages/mattermost_bot_settings.py
 
@@ -33,4 +33,4 @@ echo>>$settings "PLUGINS_ONLY_DOC_STRING = ${MATTERMOST_BOT_PLUGINS_ONLY_DOC:-Fa
 
 echo>>$settings "WORKERS_NUM = ${MATTERMOST_BOT_WORKERS:-10}"
 
-matterbot
+mmpy_bot
