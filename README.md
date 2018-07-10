@@ -1,5 +1,5 @@
 ## Brief
-Docker image with Mattermost Bot (https://github.com/LPgenerator/mattermost\_bot)
+Docker image with Mattermost Bot (https://github.com/attzonko/mmpy_bot)
 
 ## Environment variables
 - `MATTERMOST_BOT_SSL_VERIFY`: whether to perform SSL cert verification, defaults to `True`

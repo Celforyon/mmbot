@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 LABEL maintainer="Alexis Pereda <alexis@pereda.fr>"
-LABEL version="2.0"
+LABEL version="2.1"
 LABEL description="Matterbot (mmpy_bot)"
 
 RUN apt update \

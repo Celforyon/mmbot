@@ -5,7 +5,7 @@ export MATTERMOST_PROTOCOL=http
 
 [ -n "${MATTERMOST_DOMAIN}" ] && export MATTERMOST_BOT_URL="${MATTERMOST_PROTOCOL}://${MATTERMOST_DOMAIN}/api/${MATTERMOST_API_VERSION:-v4}"
 
-settings=/usr/local/lib/python2.7/dist-packages/mattermost_bot_settings.py
+settings=/usr/local/lib/python2.7/dist-packages/mmpy_bot_settings.py
 
 function plugins_add() {
 	settings=$1
@@ -13,7 +13,7 @@ function plugins_add() {
 	p=/plugins/${d}
 
 	if [ -f "${p}/__init__.py" ]; then
-		echo>>$settings "    'mattermost_bot.userplugins.${d}',"
+		echo>>$settings "    'mmpy_bot.userplugins.${d}',"
 	else
 		echo>&2 "warn: ignoring ${p} (missing __init__.py"
 	fi
@@ -22,7 +22,7 @@ function plugins_add() {
 echo> $settings "DEBUG = ${MATTERMOST_BOT_DEBUG:-False}"
 
 echo>>$settings 'PLUGINS = ['
-echo>>$settings "    'mattermost_bot.plugins',"
+echo>>$settings "    'mmpy_bot.plugins',"
 plugins_add "${settings}" ""
 ls -1d /plugins/*/|cut -c10-|rev|cut -c2-|rev|while read -r d; do
 	plugins_add "${settings}" "${d}"
