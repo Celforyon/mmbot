@@ -10,6 +10,7 @@ Docker image with Mattermost Bot (https://github.com/attzonko/mmpy_bot)
 - `MATTERMOST_BOT_DEBUG`: set to `True` to enable debug mode, defaults to `False`
 - `MATTERMOST_BOT_PLUGINS_ONLY_DOC`: set to `True` to disable regexp in help message, defaults to `False`
 - `MATTERMOST_BOT_WORKERS`: the bot number of workers, defaults to `10`
+- `MATTERMOST_BOT_DEFAULT_REPLY`: the bot default reply, defaults to `None`
 
 ### Alternative to MATTERMOST\_BOT\_URL
 - `MATTERMOST_DOMAIN`: the Mattermost domain (**without** `http://`)
